@@ -5,8 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>#</th>
       <th>ID</th>
       <th>Timestamp</th>
+      <th>Received</th>
       <th></th>
     </tr>
   </thead>
@@ -15,6 +17,8 @@
     <% @payloads.each do |payload| %>
       <tr>
         <td><%= payload.id %></td>
+        <td><%= payload.event_id %></td>
+        <td><%= payload.timestamp %>
         <td><%= payload.created_at %></td>
         <td><%= link_to 'Show', payload %></td>
       </tr>
