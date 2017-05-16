@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/json.min.js" integrity="sha256-KPdGtw3AdDen/v6+9ue/V3m+9C2lpNiuirroLsHrJZM=" crossorigin="anonymous"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 
 <p>
   <strong>Body:</strong>
-  <%= @payload.body %>
+  <pre><code class="json"><%= JSON.pretty_generate(JSON.parse(@payload.body)) %></code></pre>
 </p>
 
-<%= link_to 'Edit', edit_payload_path(@payload) %> |
 <%= link_to 'Back', payloads_path %>

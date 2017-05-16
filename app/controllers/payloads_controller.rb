@@ -4,8 +4,8 @@ class PayloadsController < ApplicationController
 
   # GET /payloads
   # GET /payloads.json
-  def indeo
-    @payloads = Payload.all
+  def index
+    @payloads = Payload.order(id: :desc)
   end
 
   # GET /payloads/1
@@ -25,15 +25,17 @@ class PayloadsController < ApplicationController
   # POST /payloads
   # POST /payloads.json
   def create
-    @payload = Payload.new(content: request.body)
+    @payload = Payload.new(body: request.body.read)
 
     respond_to do |format|
       if @payload.save
         format.html { redirect_to @payload, notice: 'Payload was successfully created.' }
         format.json { render :show, status: :created, location: @payload }
+        format.xml { head :ok }
       else
         format.html { render :new }
         format.json { render json: @payload.errors, status: :unprocessable_entity }
+        format.xml { head :ok }
       end
     end
   end
